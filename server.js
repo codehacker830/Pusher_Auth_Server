@@ -1,7 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const Pusher = require('pusher'); 
-require('dotenv');
+require('dotenv').config()
 const router = express.Router();
 const cors = require('cors');
 
@@ -11,7 +11,6 @@ app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
-// const db = new Datastore();
 const pusher = new Pusher({
     appId: process.env.APP_ID,
     key: process.env.APP_KEY,
@@ -19,7 +18,7 @@ const pusher = new Pusher({
     cluster: process.env.APP_CLUSTER,
     useTLS: true
   });
-
+console.log("____process.env.APP_ID___", process.env.APP_ID)
 app.get('/test', function (req, res) { // to test if the server is running
     res.send('___all green____');
 });
